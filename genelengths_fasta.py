@@ -7,11 +7,11 @@ import numpy as np
 import Bio
 from Bio import SeqIO
 
-unirefFILE ="clustermembers_uniref.txt"                   # output from previous script containing clusterRep geneID, sequence geneID, and assigned uniref90 gene family
-fastaFILE ="MGBC_Genes.fna"                               # original fasta file with genes from MGBC (compiled from prodigal gene-calling results)
-headersFILE ="mmseqs_nucDB/MGBC_Genes_mmseqs_header.tsv"  # file containg fasta headers only (using only to get a count of the number of sequences being processed)
-uniref2fastaFILE = "fasta_uniref.txt"                     # File for final output containing sequence geneID, uniref annotation, sequence length(bp), and sequence
-unannotatedFILE = "fasta_unannotated.txt"
+unirefFILE ="clustermembers_prot_uniref.txt"                   # output from previous script containing clusterRep geneID, clustermember geneID, and assigned uniref90 gene family
+fastaFILE ="MGBC_Proteins.faa"                            # original fasta file with genes from MGBC (compiled from prodigal gene-calling results)
+headersFILE ="mmseqs_protDB/MGBC_Prot_mmseqs_headers.tsv"        # file containg fasta headers only (using only to get a count of the number of sequences being processed)
+uniref2fastaFILE = "fasta_prot_uniref.txt"                     # File for final output containing sequence geneID, uniref annotation, sequence length(bp), and sequence
+unannotatedFILE = "fasta_prot_unannotated.txt"
 
 unirefARRAY = np.loadtxt(unirefFILE, dtype=str, comments=None)
 headerARRAY = np.loadtxt(headersFILE, dtype=str, comments=None)

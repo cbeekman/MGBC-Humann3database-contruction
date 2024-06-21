@@ -7,11 +7,10 @@ import numpy as np
 import Bio
 from Bio import SeqIO
 
-
-seqFILE ="fasta_uniref.txt"                      #input file with geneID, uniref90, gene length and nuc sequence per entry from previous script
+seqFILE ="fasta_prot_uniref.txt"                      #input file with geneID, uniref90, gene length and nuc sequence per entry from previous script
 taxFILE ="MGBC_genome-taxonomy_26640.txt"        #file mapping genomeIDs to taxonomy (from MGBC publication)
-tax2fastaFILE = "MGBC_Genes_annotated.fna"       # output file name for fasta output with GeneID included 
-bowtie2FILE = "MGBC_Genes_humann3.fna"           # output file name for fasta output formatted for humann3 bowtie2 index
+tax2fastaFILE = "MGBC_Proteins_annotated.faa"       # output file name for fasta output with GeneID included
+bowtie2FILE = "MGBC_Proteins_humann3.faa"           # output file name for fasta output formatted for humann3 bowtie2 index
 
 taxARRAY = np.loadtxt(taxFILE, dtype=str, comments=None)  # load taxonomy mapping file as numpy array
 sortedTAX = taxARRAY[taxARRAY[:,0].argsort()]

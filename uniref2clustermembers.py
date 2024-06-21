@@ -5,11 +5,10 @@
 import time
 import numpy as np
 
-
-repseqFILE = "annotated_uniref90/MGBC_Genes_clusters_rep_uniref90_TopHit.tsv"
-clustermembersFILE = "mmseqs_nuc-linclust_output/MGBC_Genes_clusters.tsv"
-uniref2membersFILE = "clustermembers_uniref.txt"
-membersnomatchFILE = "clustermembers_unannotated.txt"
+repseqFILE = "annotated_prot_uniref90/MGBC_Prot_clusters_rep_uniref90_TopHit.tsv"
+clustermembersFILE = "mmseqs_prot_clustDB/MGBC_Prot_clusters.tsv"
+uniref2membersFILE = "clustermembers_prot_uniref.txt"
+membersnomatchFILE = "clustermembers_prot_unannotated.txt"
 
 print("starting script to match TOPHIT uniref annotations from representative sequences to all cluster members")
 
@@ -24,7 +23,7 @@ print ("REPSEQ array successfully sorted")
 matchsortedINDEX = np.searchsorted(repseqARRAY[:,0], clustersARRAY[:,0], sorter=repseqSORTED) # returns array of indices where each clusterARRAY value would fit in the sorted version of the repseqARRAY
 print ("CLUSTER array entries matched to sorted REPSEQ indices")                              # to maintain the sorted order (ie if sorted repseqARRAY = [A, B, C, E] and clusterARRAY = [D, B] would return [3, 1]
                                                                                               # there is no issue here because all values of clustersARRAY[:,0] are all present and unique in repseqARRAY[:,0]
-                                                                                              #ACTUALLY THERE IS AN ISSUE!!: some genes in clusters array are absent in repseqARRAY (no hit in uniref_90), leading to spurious matches  
+                                                                                              #ACTUALLY THERE IS AN ISSUE!!: some genes in clusters array are absent in repseqARRAY, leading to spurious matches  
 
 
 matchunsortedINDEX = np.take(repseqSORTED, matchsortedINDEX)          # uses the sorted matching indices to obtain the corresponding list of original (unsorted) indices in repseqARRAY  
